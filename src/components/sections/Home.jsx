@@ -31,9 +31,9 @@ export default function Home({ onNavigate }) {
       </div>
 
       <div className="hero-stack">
-        <span className="stack-label">// currently working with</span>
+        <span className="stack-label"> currently working with</span>
         <div className="stack-chips">
-          {["C++", "Python", "React", "Node.js", "LangChain"].map((s) => (
+          {["C++", "Python", "React", "Node.js", "LangChain", "LangGraph", "Crew AI"].map((s) => (
             <span className="chip" key={s}>
               {s}
             </span>
