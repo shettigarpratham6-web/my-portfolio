@@ -326,7 +326,7 @@ img {
 
 .nav-btn.active {
   color: #06231f;
-  background: var(--accent);
+  background: #cdd24f;
   font-weight: 600;
 }
 
