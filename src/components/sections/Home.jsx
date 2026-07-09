@@ -16,9 +16,9 @@ export default function Home({ onNavigate }) {
       </h1>
 
       <p className="hero-sub">
-        A Computer Science Engineering student focused on AI/ML, full-stack
-        development, and competitive programming — currently turning
-        coursework into projects that actually run.
+       A Computer Science Engineering student passionate about creating intelligent, user-
+       focused applications with Generative AI, Agentic AI, and modern full-stack 
+       technologies—transforming ideas into impactful digital experiences.
       </p>
 
       <div className="hero-actions">
