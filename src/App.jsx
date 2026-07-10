@@ -10,7 +10,7 @@ import Achievements from "./components/sections/Achievements";
 import Certifications from "./components/sections/Certifications";
 import Education from "./components/sections/Education";
 import Contact from "./components/sections/Contact";
-
+import Chatbot from "./components/Chatbot";
 const SECTIONS = {
   home: Home,
   about: About,
@@ -40,6 +40,7 @@ export default function App() {
       </main>
 
       <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
+        <Chatbot />
     </div>
   );
 }

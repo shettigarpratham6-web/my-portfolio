@@ -23,6 +23,7 @@ const paths = {
   book: "M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5v-18Zm2.5-.5A.5.5 0 0 0 6 4.5V19h13V4H6.5Z",
   send: "M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z",
   file: "M6 2h9l5 5v15H6V2Zm9 1.5V7h3.5L15 3.5Z",
+  bot: "M7 7h10a2 2 0 0 1 2 2v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9a2 2 0 0 1 2-2Zm5-4v4M9 12h.01M15 12h.01M9 16h6",
 };
 
 export default function Icon({ name, size = 18, className = "" }) {
