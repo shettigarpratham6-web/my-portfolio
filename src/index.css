@@ -504,6 +504,26 @@ img {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   About section background
+───────────────────────────────────────────────────────────── */
+.about-section {
+  position: relative;
+  isolation: isolate; /* keeps the ::before layer contained to this section */
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/logos/about-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  z-index: -1;
+  border-radius: var(--radius-lg);
+}
+
+/* ─────────────────────────────────────────────────────────────
    Skills section
 ───────────────────────────────────────────────────────────── */
 .skills-bars {
@@ -660,9 +680,12 @@ img {
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 8px;
   background: var(--accent-soft);
   color: var(--accent);
+  padding: 0px;
+  overflow: hidden;
+  
 }
 
 .timeline-top {
@@ -896,3 +919,10 @@ img {
     padding: 10px;
   }
 }
+
+.cert-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+

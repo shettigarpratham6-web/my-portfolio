@@ -1,5 +1,4 @@
 import SectionHeading from "../SectionHeading";
-import Icon from "../Icon";
 import { achievements } from "../../data/data";
 
 export default function Achievements() {
@@ -11,7 +10,14 @@ export default function Achievements() {
         {achievements.map((a) => (
           <div className="timeline-item" key={a.title}>
             <div className="timeline-icon">
-              <Icon name="award" size={16} />
+              <img
+                src={a.logo}
+                alt=""
+                className="cert-logo"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
             </div>
             <div className="timeline-content">
               <div className="timeline-top">

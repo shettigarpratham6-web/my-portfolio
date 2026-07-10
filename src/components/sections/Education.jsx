@@ -1,5 +1,4 @@
 import SectionHeading from "../SectionHeading";
-import Icon from "../Icon";
 import { education } from "../../data/data";
 
 export default function Education() {
@@ -11,7 +10,14 @@ export default function Education() {
         {education.map((e) => (
           <div className="timeline-item" key={e.degree}>
             <div className="timeline-icon">
-              <Icon name="book" size={16} />
+              <img
+                src={e.logo}
+                alt={e.school}
+                className="cert-logo"
+                onError={(ev) => {
+                  ev.currentTarget.style.display = "none";
+                }}
+              />
             </div>
             <div className="timeline-content">
               <div className="timeline-top">

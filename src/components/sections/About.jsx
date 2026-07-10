@@ -3,7 +3,7 @@ import { about } from "../../data/data";
 
 export default function About() {
   return (
-    <section className="section">
+    <section className="section about-section">
       <SectionHeading tag="about" title="About me" />
 
       <p className="body-text">{about.summary}</p>

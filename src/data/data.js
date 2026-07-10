@@ -105,12 +105,14 @@ export const achievements = [
     year: "2026",
     description:
       "Earned the 50 Days and 100 Days badges on LeetCode through consistent daily problem-solving and practice.",
+    logo: "/logos/leetcode.jpg",
   },
   {
     title: "Unstop Premier League",
     year: "2026",
     description:
       "Participated in the Unstop Premier League and received the official Unstop T-shirt as a reward for participation.",
+    logo: "/logos/unstop.jpg",
   },
 ];
 
@@ -121,7 +123,7 @@ export const certifications = [
     year: "2026",
     description:
       "Learned the fundamentals of Artificial Intelligence and Generative AI concepts.",
-    icon: "badge",
+    logo: "/logos/udemy.png",
     url: "https://udemy-certificate.s3.amazonaws.com/image/UC-9a628b1e-40b1-4b13-a097-071d46220b07.jpg",
   },
   {
@@ -130,7 +132,7 @@ export const certifications = [
     year: "2026",
     description:
       "Built modern React applications using components, hooks, and state management.",
-    icon: "code",
+    logo: "/logos/letsupgrade.jpg",
     url: "https://www.linkedin.com/posts/prathamshettigar_reactjs-frontenddevelopment-webdevelopment-activity-7436063315748974592-X4Ud?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFhiy-EBAQUMiqGGeDvEG_7eoGuUPnzzENs",
   },
   {
@@ -138,7 +140,7 @@ export const certifications = [
     issuer: "HackerRank",
     year: "2026",
     description: "Validated problem-solving and algorithmic programming skills.",
-    icon: "award",
+    logo: "/logos/hackerrank.png",
     url: "https://www.hackerrank.com/certificates/iframe/12f25bdff4fe",
   },
   {
@@ -146,7 +148,7 @@ export const certifications = [
     issuer: "OneRoadmap",
     year: "2026",
     description: "Strengthened Python programming fundamentals and practical development skills.",
-    icon: "code",
+    logo: "/logos/oneroadmap.webp",
     url: "https://www.oneroadmap.io/skills/python/certificate/CERT-8FD31F61",
   },
   {
@@ -154,7 +156,7 @@ export const certifications = [
     issuer: "Simplilearn",
     year: "2026",
     description: "Learned web scraping techniques using Python and Beautiful Soup.",
-    icon: "badge",
+    logo: "/logos/simplilearn.jpg",
     url: "https://certificates.simplicdn.net/share/10034762_9150485_1774968440084.png",
   },
   {
@@ -162,7 +164,7 @@ export const certifications = [
     issuer: "Scaler",
     year: "2026",
     description: "Mastered dynamic programming techniques for solving complex algorithmic problems.",
-    icon: "code",
+    logo: "/logos/scaler.jpg",
     url: "https://moonshot.scaler.com/s/sl/kWUFixduU4?_gl=1*7ojg75*_gcl_au*MTQxNjMwNDI0LjE3NzAyNzEyMTQ.*FPAU*MjA0MzcwMDkyOC4xNzcwMjcxMjE4*_ga*MTM3NjU5NTQ0NC4xNzcwMjcxMjE0*_ga_53S71ZZG1X*czE3NzA4MTI4OTUkbzckZzEkdDE3NzA4MTM1NDEkajQkbDAkaDE1Njc3MzA4MTc.",
   },
   {
@@ -170,7 +172,7 @@ export const certifications = [
     issuer: "Microsoft",
     year: "2025",
     description: "Completed cloud computing and Microsoft Azure learning modules.",
-    icon: "badge",
+    logo: "/logos/microsoft.webp",
     url: "https://learn.microsoft.com/en-us/users/pratham-8946/achievements/print?tab=tab-challenges",
   },
   {
@@ -178,7 +180,7 @@ export const certifications = [
     issuer: "Forage",
     year: "2025",
     description: "Completed a virtual job simulation focused on cybersecurity workflows and best practices.",
-    icon: "badge",
+    logo: "/logos/forage.jpg",
     url: "https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_68ceb83794597f858749a0e8_1759039618823_completion_certificate.pdf",
   },
   {
@@ -186,7 +188,7 @@ export const certifications = [
     issuer: "Unstop",
     year: "2026",
     description: "Participated in a national coding competition to enhance problem-solving skills.",
-    icon: "award",
+    logo: "/logos/unstop.jpg",
     url: "https://unstop.com/certificate-preview/c69d7709-b216-4759-ac53-996a3af11d44",
   },
   {
@@ -194,7 +196,7 @@ export const certifications = [
     issuer: "Unstop",
     year: "2026",
     description: "Participated in a competitive coding contest focused on algorithmic challenges.",
-    icon: "award",
+    logo: "/logos/unstop.jpg",
     url: "https://unstop.com/certificate-preview/c459fd18-6e7f-4732-8e7a-10c4246c232b",
   },
 ];
@@ -206,12 +208,15 @@ export const education = [
     year: "2024 — 2028",
     description:
       "Current CGPA: 9.73/10. Focused on core computer science, full-stack development, Generative AI, Agentic AI, and problem solving.",
+    logo: "/logos/sahyadri-college.jpg",
   },
   {
     degree: "Pre-University",
-    school: "Shamili P.U. College,Kidiyoor,Udupi",
+    school: "Shamili P.U. College, Kidiyoor, Udupi",
     year: "2022 — 2024",
-    description: "Completed Pre-University education in PCMC with 94%, building a strong foundation in Mathematics, Physics, Chemistry, and Computer Science.",
+    description:
+      "Completed Pre-University education in PCMC with 94%, building a strong foundation in Mathematics, Physics, Chemistry, and Computer Science.",
+    logo: "/logos/shamili-puc.jpg",
   },
 ];
 

@@ -1,5 +1,4 @@
 import SectionHeading from "../SectionHeading";
-import Icon from "../Icon";
 import { certifications } from "../../data/data";
 
 export default function Certifications() {
@@ -17,7 +16,14 @@ export default function Certifications() {
             rel="noreferrer"
           >
             <div className="cert-icon">
-              <Icon name={c.icon} size={20} />
+              <img
+                src={c.logo}
+                alt={c.issuer}
+                className="cert-logo"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
             </div>
 
             <div>
