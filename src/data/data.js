@@ -221,7 +221,7 @@ export const education = [
 ];
 
 export const resume = {
- file: "/resume_1.pdf", // View-only: this is displayed in a modal, no download link is provided anywhere.
+ file: "/resum.pdf", // View-only: this is displayed in a modal, no download link is provided anywhere.
   summary:
     "A quick view of my resume. Reach out over email or LinkedIn if you'd like a copy.",
   sections: [
