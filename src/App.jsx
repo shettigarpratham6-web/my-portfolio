@@ -11,6 +11,7 @@ import Certifications from "./components/sections/Certifications";
 import Education from "./components/sections/Education";
 import Contact from "./components/sections/Contact";
 import Chatbot from "./components/Chatbot";
+import Loader from "./components/Loader";
 const SECTIONS = {
   home: Home,
   about: About,
@@ -29,6 +30,8 @@ export default function App() {
   const ActiveSection = SECTIONS[active] ?? Home;
 
   return (
+    <>
+    <Loader />
     <div className="app-shell">
       <Sidebar onOpenResume={() => setResumeOpen(true)} />
 
@@ -42,5 +45,6 @@ export default function App() {
       <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
         <Chatbot />
     </div>
+    </>
   );
 }
