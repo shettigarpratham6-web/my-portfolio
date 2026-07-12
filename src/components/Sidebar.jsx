@@ -39,13 +39,19 @@ export default function Sidebar({ onOpenResume }) {
           aria-expanded={showContact}
         >
           Show contacts
-          <Icon name="chevronDown" size={14} className={showContact ? "rotated" : ""} />
+          <Icon
+            name="chevronDown"
+            size={14}
+            className={showContact ? "rotated" : ""}
+          />
         </button>
 
         <div className={`contact-panel ${showContact ? "open" : ""}`}>
           <ul className="contact-list">
             <li>
-              <div className="contact-icon"><Icon name="mail" size={16} /></div>
+              <div className="contact-icon">
+                <Icon name="mail" size={16} />
+              </div>
               <div className="contact-meta">
                 <span className="contact-label">Email</span>
                 <a href={`mailto:${profile.email}`} className="contact-value">
@@ -53,8 +59,11 @@ export default function Sidebar({ onOpenResume }) {
                 </a>
               </div>
             </li>
+
             <li>
-              <div className="contact-icon"><Icon name="phone" size={16} /></div>
+              <div className="contact-icon">
+                <Icon name="phone" size={16} />
+              </div>
               <div className="contact-meta">
                 <span className="contact-label">Phone</span>
                 <a href={`tel:${profile.phone}`} className="contact-value">
@@ -62,8 +71,11 @@ export default function Sidebar({ onOpenResume }) {
                 </a>
               </div>
             </li>
+
             <li>
-              <div className="contact-icon"><Icon name="pin" size={16} /></div>
+              <div className="contact-icon">
+                <Icon name="pin" size={16} />
+              </div>
               <div className="contact-meta">
                 <span className="contact-label">Location</span>
                 <span className="contact-value">{profile.location}</span>
@@ -77,11 +89,18 @@ export default function Sidebar({ onOpenResume }) {
           View resume
         </button>
 
-        <ul className="social-list">
+        <ul className="social-dock">
           {profile.socials.map((s) => (
-            <li key={s.name}>
-              <a href={s.url} target="_blank" rel="noreferrer" aria-label={s.name} title={s.name}>
-                <Icon name={s.icon} size={17} />
+            <li key={s.name} className="social-dock-item">
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.name}
+                title={s.name}
+                className={`social-dock-icon social-${s.icon}`}
+              >
+                <Icon name={s.icon} size={22} />
               </a>
             </li>
           ))}

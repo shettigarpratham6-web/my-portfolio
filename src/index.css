@@ -267,26 +267,57 @@ img {
   transform: translateY(-1px);
 }
 
-.social-list {
+/* ─────────────────────────────────────────────────────────────
+   Social dock (squircle icons)
+───────────────────────────────────────────────────────────── */
+.social-dock {
   display: flex;
+  align-items: flex-end;
   gap: 10px;
   margin-top: 4px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
-.social-list a {
-  width: 36px;
-  height: 36px;
+.social-dock-item {
+  display: flex;
+}
+
+.social-dock-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 14px;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  border: 1px solid var(--border-strong);
-  color: var(--text-muted);
-  transition: color 0.2s ease, border-color 0.2s ease;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.social-list a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+.social-dock-icon:hover {
+  transform: scale(1.12) translateY(-6px);
+  box-shadow: 0 14px 24px -6px rgba(0, 0, 0, 0.5);
+}
+
+.social-github {
+  background: linear-gradient(to bottom right, #3a3a3a, #111);
+}
+
+.social-linkedin {
+  background: linear-gradient(to bottom right, #2563eb, #1d4ed8);
+}
+
+.social-leetcode {
+  background: linear-gradient(to bottom right, #f59e0b, #b45309);
+}
+
+.social-codolio {
+  background: linear-gradient(to bottom right, #6366f1, #4338ca);
 }
 
 /* ─────────────────────────────────────────────────────────────
