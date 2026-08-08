@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import ResumeModal from "./components/ResumeModal";
@@ -12,6 +12,9 @@ import Education from "./components/sections/Education";
 import Contact from "./components/sections/Contact";
 import Chatbot from "./components/Chatbot";
 import Loader from "./components/Loader";
+import BackgroundCanvas from "./components/BackgroundCanvas";
+import gsap from "gsap";
+
 const SECTIONS = {
   home: Home,
   about: About,
@@ -26,25 +29,38 @@ const SECTIONS = {
 export default function App() {
   const [active, setActive] = useState("home");
   const [resumeOpen, setResumeOpen] = useState(false);
+  const sectionRef = useRef(null);
 
   const ActiveSection = SECTIONS[active] ?? Home;
 
+  useEffect(() => {
+    if (sectionRef.current) {
+      gsap.fromTo(
+        sectionRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
+      );
+    }
+  }, [active]);
+
   return (
     <>
-    <Loader />
-    <div className="app-shell">
-      <Sidebar onOpenResume={() => setResumeOpen(true)} />
+      <Loader />
+      <BackgroundCanvas />
+      <div className="app-shell">
+        <Sidebar onOpenResume={() => setResumeOpen(true)} />
 
-      <main className="main-content">
-        <Navbar active={active} onChange={setActive} />
-        <div className="section-viewport">
-          <ActiveSection onNavigate={setActive} />
-        </div>
-      </main>
+        <main className="main-content">
+          <Navbar active={active} onChange={setActive} />
+          <div className="section-viewport" ref={sectionRef}>
+            <ActiveSection onNavigate={setActive} />
+          </div>
+        </main>
 
-      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
+        <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
         <Chatbot />
-    </div>
+      </div>
     </>
   );
 }
+

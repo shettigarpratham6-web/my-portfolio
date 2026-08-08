@@ -20,7 +20,7 @@ export const profile = {
 
 export const about = {
   summary:
-   "I'm a third-year Computer Science Engineering student passionate about building intelligent software that solves real-world problems. My primary interests lie in Generative AI, Agentic AI, full-stack web development, and competitive programming. I enjoy taking ideas from concept to deployment, building scalable applications with clean code and intuitive user experiences while continuously exploring the latest advancements in AI.",
+    "I'm a third-year Computer Science Engineering student passionate about building intelligent software that solves real-world problems. My primary interests lie in Generative AI, Agentic AI, full-stack web development, and competitive programming. I enjoy taking ideas from concept to deployment, building scalable applications with clean code and intuitive user experiences while continuously exploring the latest advancements in AI.",
   details:
     "I enjoy building real-world applications powered by Generative AI and Agentic AI, alongside modern full-stack web development. I focus on writing clean, scalable, and maintainable code while continuously improving my problem-solving skills through Data Structures & Algorithms and competitive programming.",
   info: [
@@ -35,7 +35,7 @@ export const skills = {
   technical: [
     { name: "C++", level: 85 },
     { name: "Python", level: 80 },
-    {name:"HTML / CSS / Tailwindcss", level:90},
+    { name: "HTML / CSS / Tailwindcss", level: 90 },
     { name: "JavaScript", level: 80 },
     { name: "React.js", level: 78 },
     { name: "Node.js / Express", level: 75 },
@@ -88,13 +88,13 @@ export const projects = [
     description:
       "Built a hackathon project for Vibe2Ship, organized by Coding Ninjas, using Google AI tools to develop an innovative AI-powered solution within the competition timeline.",
     stack: [
-  "Google AI Studio",
-  "Google Stitch",
-  "Google Gemini API",
-  "React.js",
-  "JavaScript",
-  "Vercel",
-],
+      "Google AI Studio",
+      "Google Stitch",
+      "Google Gemini API",
+      "React.js",
+      "JavaScript",
+      "Vercel",
+    ],
     link: "https://github.com/shettigarpratham6-web/Deadline_Guardian.git",
   }
 ];
@@ -111,7 +111,7 @@ export const achievements = [
     title: "Unstop Premier League",
     year: "2026",
     description:
-      "Participated in the Unstop Premier League and received the official Unstop T-shirt as a reward for participation.",
+      "Finalist in the Unstop Premier League and received the official Unstop T-shirt as a reward for participation.",
     logo: "/logos/unstop.jpg",
   },
 ];
@@ -221,7 +221,7 @@ export const education = [
 ];
 
 export const resume = {
- file: "/resum.pdf", // View-only: this is displayed in a modal, no download link is provided anywhere.
+  file: "/resum.pdf", // View-only: this is displayed in a modal, no download link is provided anywhere.
   summary:
     "A quick view of my resume. Reach out over email or LinkedIn if you'd like a copy.",
   sections: [
