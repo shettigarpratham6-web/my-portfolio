@@ -15,7 +15,8 @@
     "gsap": "^3.15.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-terminal-component-new": "^2.3.6"
+    "react-terminal-component-new": "^2.3.6",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@types/react": "^19.2.17",

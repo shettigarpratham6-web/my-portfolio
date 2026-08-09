@@ -86,6 +86,8 @@ function getReply(input) {
   return match ? match.reply() : fallback;
 }
 
+const CHATBOT_ICON = "https://cdn-icons-png.flaticon.com/128/18052/18052532.png";
+
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -117,12 +119,25 @@ export default function Chatbot() {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Open chat"}
       >
-        <Icon name={open ? "close" : "bot"} size={25} />
+        {open ? (
+          <Icon name="close" size={24} />
+        ) : (
+          <img
+            src={CHATBOT_ICON}
+            alt="Chatbot"
+            className="chatbot-toggle-img"
+          />
+        )}
       </button>
 
       {open && (
         <div className="chatbot-panel" role="dialog" aria-label="Portfolio assistant chat">
           <div className="chatbot-header">
+            <img
+              src={CHATBOT_ICON}
+              alt="Chatbot"
+              className="chatbot-header-img"
+            />
             <span>Ask about {profile.name}</span>
           </div>
 

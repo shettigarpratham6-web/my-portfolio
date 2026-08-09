@@ -65,6 +65,8 @@ export const projects = [
       "ClarityScript is an AI-powered full-stack web application designed to transform complex code into clear, structured, and human-readable explanations in real time.",
     stack: ["Node.js", "React.js", "AI Integration(API)", "Markdown Rendering", "Websecurity(Helmet, Rate Limiting"],
     link: "https://github.com/shettigarpratham6-web/Clarity-Script",
+    featured: true,
+    image: "/projects/clarityscript.png",
   },
   {
     title: "AI Task Prioritization Agent using LLM",
@@ -73,6 +75,8 @@ export const projects = [
       "Built an AI-powered task prioritization agent that transforms unstructured task lists into actionable categories using LLMs.",
     stack: ["Python", "Groq API", "LLaMA 3.1", "prompt engineering"],
     link: "https://github.com/shettigarpratham6-web/AI-powered-task-prioritization-agent.git",
+    featured: true,
+    image: "/projects/ai-task-agent.png",
   },
   {
     title: "Local Machine AI support",
@@ -81,6 +85,8 @@ export const projects = [
       "Built a local AI assistant using Retrieval-Augmented Generation (RAG) to answer questions from custom documents while keeping all data on the user's machine.",
     stack: ["LangChain", "Ollama", "ChromaDB", "Pandas"],
     link: "https://github.com/shettigarpratham6-web/Local_AI_Agent.git",
+    featured: false,
+    image: "/projects/local-rag.png",
   },
   {
     title: "Deadline Guardian",
@@ -96,6 +102,8 @@ export const projects = [
       "Vercel",
     ],
     link: "https://github.com/shettigarpratham6-web/Deadline_Guardian.git",
+    featured: false,
+    image: "/projects/deadline-guardian.png",
   }
 ];
 
