@@ -105,14 +105,14 @@ const About = () => {
           --bg: #0d1117;
           --surface: #161b22;
           --border: #30363d;
-          --green: #fbbf24;
+          --green: #86efac;
           --cyan: #79c0ff;
-          --yellow: #f59e0b;
+          --yellow: #4ade80;
           --purple: #d2a8ff;
           --pink: #ff7b72;
           --dim: #8b949e;
           --white: #e6edf3;
-          --cursor: #fbbf24;
+          --cursor: #86efac;
         }
 
         .os-chrome {

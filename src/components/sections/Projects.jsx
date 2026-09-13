@@ -68,10 +68,10 @@ function ProjectImage({ project }) {
           <rect x="275" y="79" width="55" height="16" rx="4" fill="#ef4444" opacity="0.25" />
           <text x="302.5" y="90" fill="#fca5a5" fontSize="9" textAnchor="middle">Urgent</text>
           <rect x="55" y="112" width="290" height="34" rx="6" fill="#1e293b" stroke="rgba(255,255,255,0.06)" />
-          <circle cx="73" cy="129" r="6" fill="#f59e0b" />
+          <circle cx="73" cy="129" r="6" fill="#4ade80" />
           <text x="90" y="133" fill="#e2e8f0" fontSize="11" fontWeight="500">Medium: Groq API Integration</text>
-          <rect x="275" y="121" width="55" height="16" rx="4" fill="#f59e0b" opacity="0.25" />
-          <text x="302.5" y="132" fill="#fcd34d" fontSize="9" textAnchor="middle">Normal</text>
+          <rect x="275" y="121" width="55" height="16" rx="4" fill="#4ade80" opacity="0.25" />
+          <text x="302.5" y="132" fill="#bbf7d0" fontSize="9" textAnchor="middle">Normal</text>
           <rect x="55" y="154" width="290" height="34" rx="6" fill="#1e293b" stroke="rgba(255,255,255,0.06)" />
           <circle cx="73" cy="171" r="6" fill="#10b981" />
           <text x="90" y="175" fill="#e2e8f0" fontSize="11" fontWeight="500">Low: Prompt Engineering Docs</text>

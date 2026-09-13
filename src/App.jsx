@@ -30,23 +30,48 @@ export default function App() {
   const [active, setActive] = useState("home");
   const [resumeOpen, setResumeOpen] = useState(false);
   const sectionRef = useRef(null);
+  const transitionRef = useRef(null);
 
   const ActiveSection = SECTIONS[active] ?? Home;
 
   useEffect(() => {
-    if (sectionRef.current) {
-      gsap.fromTo(
+    if (!sectionRef.current || !transitionRef.current) return;
+
+    const transition = gsap.timeline();
+    transition
+      .set(transitionRef.current, { transformOrigin: "bottom" })
+      .to(transitionRef.current, {
+        scaleY: 1,
+        duration: 0.22,
+        ease: "power2.in",
+      })
+      .set(sectionRef.current, { opacity: 0, y: 18, scale: 0.985 })
+      .to(transitionRef.current, {
+        scaleY: 0,
+        transformOrigin: "top",
+        duration: 0.35,
+        ease: "power3.out",
+      })
+      .to(
         sectionRef.current,
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: "power3.out",
+        },
+        "<0.08"
       );
-    }
+
+    return () => transition.kill();
   }, [active]);
 
   return (
     <>
       <Loader />
       <BackgroundCanvas />
+      <div className="page-transition" ref={transitionRef} aria-hidden="true" />
       <div className="app-shell">
         <Sidebar onOpenResume={() => setResumeOpen(true)} />
 

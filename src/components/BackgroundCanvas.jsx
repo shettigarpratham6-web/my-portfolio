@@ -56,7 +56,7 @@ export default function BackgroundCanvas() {
         mouse.y,
         700
       );
-      radialGradient.addColorStop(0, "rgba(251, 191, 36, 0.05)");
+      radialGradient.addColorStop(0, "rgba(134, 239, 172, 0.05)");
       radialGradient.addColorStop(0.5, "rgba(13, 13, 26, 0.02)");
       radialGradient.addColorStop(1, "rgba(0, 0, 0, 0)");
       ctx.fillStyle = radialGradient;
@@ -77,7 +77,7 @@ export default function BackgroundCanvas() {
         // Draw particle dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(251, 191, 36, ${p.alpha})`;
+        ctx.fillStyle = `rgba(134, 239, 172, ${p.alpha})`;
         ctx.fill();
 
         // Connect nearby particles
@@ -91,7 +91,7 @@ export default function BackgroundCanvas() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(251, 191, 36, ${0.12 * (1 - dist / 140)})`;
+            ctx.strokeStyle = `rgba(134, 239, 172, ${0.12 * (1 - dist / 140)})`;
             ctx.stroke();
           }
         }
@@ -104,7 +104,7 @@ export default function BackgroundCanvas() {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(251, 191, 36, ${0.25 * (1 - mdist / 180)})`;
+          ctx.strokeStyle = `rgba(134, 239, 172, ${0.25 * (1 - mdist / 180)})`;
           ctx.stroke();
         }
       });
