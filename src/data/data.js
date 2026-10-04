@@ -69,6 +69,32 @@ export const projects = [
     image: "/projects/clarityscript.png",
   },
   {
+    title: "AI Video & Meeting Assistant",
+    tag: "RAG · LangChain · Whisper · Inngest",
+    description:
+      "Built an AI-powered video and meeting assistant that transforms YouTube videos, uploaded media, and live recordings into searchable, structured meeting intelligence. Integrated transcription, translation, summarization, vector search, semantic caching, and RAG-based question answering.",
+    stack: [
+      "React 19",
+      "Vite",
+      "FastAPI",
+      "LangChain",
+      "LLaMA 3.2",
+      "Ollama",
+      "Whisper",
+      "Sarvam AI",
+      "ChromaDB",
+      "Redis VL",
+      "Inngest",
+      "FFmpeg",
+      "yt-dlp",
+      "Sentence Transformers",
+      "ReportLab"
+    ],
+    link: "https://github.com/shettigarpratham6-web/Production-Ready-AI-Video-Assistant-with-RAG.git",
+    featured: true,
+    image: "/logos/ai-meeting-assistant.png",
+  },
+  {
     title: "AI Task Prioritization Agent using LLM",
     tag: " AI Assistant",
     description:
@@ -104,7 +130,18 @@ export const projects = [
     link: "https://github.com/shettigarpratham6-web/Deadline_Guardian.git",
     featured: false,
     image: "/projects/deadline-guardian.png",
-  }
+  },
+  {
+    title: "Autonomous Agentic Research Studio",
+    tag: "Langchain · Langsmith · LCEL pipeline",
+    description:
+      "Built a full-stack multi-agent research platform that automates web research and generates structured, dynamically sourced intelligence reports.Orchestrated Search, Reader, Critic, and Writer agents using LangChain, Gemini, Cerebras, tool calling, and LangSmith for reliable research workflows.",
+    stack: ["LangChain", "Langsmith", "FastAPI", "Cerebras AI", "Gemini AI", "Next.js"],
+    link: "https://github.com/shettigarpratham6-web/Autonomous-Agentic-Research-Studio.git",
+    featured: false,
+    image: "/logos/agentic-research.png",
+  },
+
 ];
 
 export const achievements = [
