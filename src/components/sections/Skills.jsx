@@ -1,109 +1,108 @@
-import { useEffect, useRef } from "react";
-import SectionHeading from "../SectionHeading";
-import { skills } from "../../data/data";
-import gsap from "gsap";
-
-// Map each technology and tool to a high quality tech vector icon URL
-const SKILL_ICONS = {
-  "C++": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
-  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-  "HTML / CSS / Tailwindcss": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  "React.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "Node.js / Express": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-  "LangChain / LangGraph": "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/logos/langchain-ipuhh4qo1jz5ssl4x0g2a.png/langchain-dp1uxj2zn3752pntqnpfu2.png?_a=DATAiZAAZAA0",
-  "Data Structures & Algorithms": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
-  "Git & GitHub": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  "VS Code": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
-  "Firebase": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-  "ChromaDB": "https://images.seeklogo.com/logo-png/48/1/chroma-logo-png_seeklogo-482133.png",
-  "Streamlit": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg",
-  "Google AI Studio": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg",
-  "Claude": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Claude_AI_symbol.svg/1280px-Claude_AI_symbol.svg.png",
-  "Arduino": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg",
-  "Vercel": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
-  "N8n": "https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-avatar/avatars/n8n.webp",
-};
-
 export default function Skills() {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const cards = containerRef.current.querySelectorAll(".skill-card-item");
-      gsap.fromTo(
-        cards,
-        { opacity: 0, y: 20, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.45,
-          stagger: 0.05,
-          ease: "power2.out",
-        }
-      );
-    }
-  }, []);
+  const skillCategories = [
+    {
+      num: "01",
+      category: "Programming Languages",
+      items: [
+        "C++ (DSA & Problem Solving)",
+        "Python",
+        "JavaScript (ES6+)",
+        "SQL",
+        "C",
+      ],
+    },
+    {
+      num: "02",
+      category: "Frontend Engineering",
+      items: [
+        "React.js",
+        "Vite",
+        "Tailwind CSS",
+        "HTML5 / Semantic Web",
+        "Modern CSS / Flexbox / Grid",
+        "Responsive UI Architecture",
+      ],
+    },
+    {
+      num: "03",
+      category: "Backend & Databases",
+      items: [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Firebase",
+        "REST APIs",
+        "Web Security (Helmet, Rate Limiting)",
+      ],
+    },
+    {
+      num: "04",
+      category: "Generative AI & Agentic AI",
+      items: [
+        "LangChain",
+        "LangGraph",
+        "Autonomous LLM Agents",
+        "ChromaDB (Vector DB)",
+        "Retrieval-Augmented Generation (RAG)",
+        "Groq API & LLaMA 3.1",
+        "Ollama (Local LLMs)",
+        "Prompt Engineering",
+        "Crew AI",
+      ],
+    },
+    {
+      num: "05",
+      category: "Tools & Infrastructure",
+      items: [
+        "Git & GitHub",
+        "VS Code",
+        "Vercel Deployment",
+        "Google AI Studio & Gemini API",
+        "Streamlit",
+        "Claude API",
+        "n8n Automation",
+        "Make.com",
+        "Arduino Hardware",
+      ],
+    },
+  ];
 
   return (
-    <section className="section" ref={containerRef}>
-      <SectionHeading tag="skills" title="My skills" />
+    <section className="section-padding" id="skills">
+      <div className="container">
+        {/* Editorial Section Header */}
+        <div className="editorial-section-header">
+          <div className="editorial-header-top">
+            <span className="editorial-index">03 / TECHNICAL CAPABILITIES</span>
+            <span className="editorial-tag">Stack & Tooling</span>
+          </div>
+          <h2 className="editorial-title">What I Work With.</h2>
+          <p className="editorial-subtitle">
+            A comprehensive overview of languages, frameworks, AI architectures, and developer tooling I use to craft intelligent software.
+          </p>
+        </div>
 
-      <div className="skills-grid">
-        {skills.technical.map((s) => {
-          const logoSrc = SKILL_ICONS[s.name];
-          return (
-            <div className="skill-card-item tech-card-only" key={s.name}>
-              <div className="skill-card-header">
-                <div className="skill-icon-wrapper">
-                  {logoSrc ? (
-                    <img
-                      src={logoSrc}
-                      alt={s.name}
-                      className="skill-tech-logo"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                      }}
-                    />
-                  ) : (
-                    <div className="skill-badge-fallback">{s.name.charAt(0)}</div>
-                  )}
-                </div>
-                <span className="skill-card-name">{s.name}</span>
+        {/* Refined Editorial List */}
+        <div className="skills-editorial-list">
+          {skillCategories.map((group) => (
+            <div className="skills-category-row" key={group.num}>
+              <div className="skills-category-head">
+                <span className="skills-cat-num">{group.num} — CATEGORY</span>
+                <h3 className="skills-cat-title">{group.category}</h3>
+              </div>
+
+              <div className="skills-items-grid">
+                {group.items.map((skill) => (
+                  <span className="skill-typography-pill" key={skill}>
+                    <span className="skill-indicator" aria-hidden="true" />
+                    <span>{skill}</span>
+                  </span>
+                ))}
               </div>
             </div>
-          );
-        })}
-      </div>
-
-      <h3 className="subheading">Tools &amp; platforms</h3>
-      <div className="tools-grid">
-        {skills.tools.map((t) => {
-          const logoSrc = SKILL_ICONS[t];
-          return (
-            <div className="tool-card-item skill-card-item" key={t}>
-              <div className="tool-icon-wrapper">
-                {logoSrc ? (
-                  <img
-                    src={logoSrc}
-                    alt={t}
-                    className="skill-tech-logo"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                ) : (
-                  <div className="skill-badge-fallback">{t.charAt(0)}</div>
-                )}
-              </div>
-              <span className="tool-card-name">{t}</span>
-            </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-

@@ -1,91 +1,43 @@
-import { useState, useRef, useEffect } from "react";
-import Sidebar from "./components/Sidebar";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
-import ResumeModal from "./components/ResumeModal";
 import Home from "./components/sections/Home";
+import TechnicalFocus from "./components/sections/TechnicalFocus";
+import Projects from "./components/sections/Projects";
 import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
-import Projects from "./components/sections/Projects";
-import Achievements from "./components/sections/Achievements";
-import Certifications from "./components/sections/Certifications";
-import Education from "./components/sections/Education";
+import DeveloperStats from "./components/sections/DeveloperStats";
+import Journey from "./components/sections/Journey";
 import Contact from "./components/sections/Contact";
+import Footer from "./components/Footer";
+import ResumeModal from "./components/ResumeModal";
 import Chatbot from "./components/Chatbot";
-import Loader from "./components/Loader";
-import BackgroundCanvas from "./components/BackgroundCanvas";
-import gsap from "gsap";
-
-const SECTIONS = {
-  home: Home,
-  about: About,
-  skills: Skills,
-  projects: Projects,
-  achievements: Achievements,
-  certifications: Certifications,
-  education: Education,
-  contact: Contact,
-};
 
 export default function App() {
-  const [active, setActive] = useState("home");
   const [resumeOpen, setResumeOpen] = useState(false);
-  const sectionRef = useRef(null);
-  const transitionRef = useRef(null);
-
-  const ActiveSection = SECTIONS[active] ?? Home;
-
-  useEffect(() => {
-    if (!sectionRef.current || !transitionRef.current) return;
-
-    const transition = gsap.timeline();
-    transition
-      .set(transitionRef.current, { transformOrigin: "bottom" })
-      .to(transitionRef.current, {
-        scaleY: 1,
-        duration: 0.22,
-        ease: "power2.in",
-      })
-      .set(sectionRef.current, { opacity: 0, y: 18, scale: 0.985 })
-      .to(transitionRef.current, {
-        scaleY: 0,
-        transformOrigin: "top",
-        duration: 0.35,
-        ease: "power3.out",
-      })
-      .to(
-        sectionRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.5,
-          ease: "power3.out",
-        },
-        "<0.08"
-      );
-
-    return () => transition.kill();
-  }, [active]);
 
   return (
-    <>
-      <Loader />
-      <BackgroundCanvas />
-      <div className="page-transition" ref={transitionRef} aria-hidden="true" />
-      <div className="app-shell">
-        <Sidebar onOpenResume={() => setResumeOpen(true)} />
+    <div className="portfolio-app-root">
+      {/* Sticky Editorial Navigation */}
+      <Navbar onOpenResume={() => setResumeOpen(true)} />
 
-        <main className="main-content">
-          <Navbar active={active} onChange={setActive} />
-          <div className="section-viewport" ref={sectionRef}>
-            <ActiveSection onNavigate={setActive} />
-          </div>
-        </main>
+      {/* Main Editorial Content Flow */}
+      <main id="main-content">
+        <Home onOpenResume={() => setResumeOpen(true)} />
+        <TechnicalFocus />
+        <Projects />
+        <About />
+        <Skills />
+        <DeveloperStats />
+        <Journey />
+        <Contact onOpenResume={() => setResumeOpen(true)} />
+      </main>
 
-        <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
-        <Chatbot />
-      </div>
-    </>
+      {/* Minimal Footer */}
+      <Footer />
+
+      {/* Overlays & Interactive Utilities */}
+      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
+      <Chatbot />
+    </div>
   );
 }
-

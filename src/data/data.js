@@ -6,7 +6,7 @@
 export const profile = {
   name: "Pratham",
   title: "CSE Student · AI/ML & Full-Stack Developer",
-  avatar: "/avatar.png", // place your photo in /public/avatar.jpg
+  avatar: "/photo.png",
   email: "shettigarpratham6@gmail.com",
   phone: "+91 7204779405",
   location: "Udupi, Karnataka, India",

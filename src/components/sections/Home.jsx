@@ -1,61 +1,121 @@
-import { useEffect, useRef } from "react";
 import { profile } from "../../data/data";
-import gsap from "gsap";
 
-export default function Home({ onNavigate }) {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const elements = containerRef.current.querySelectorAll(".gsap-fade");
-      gsap.fromTo(
-        elements,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: "power2.out" }
-      );
-    }
-  }, []);
+export default function Home({ onOpenResume }) {
+  const scrollTo = (id) => {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section className="section home-section" ref={containerRef}>
-      <p className="tag-label gsap-fade">
-        <span className="tag-bracket">&lt;</span>
-        home
-        <span className="tag-bracket">&gt;</span>
-      </p>
+    <section className="hero-section" id="home">
+      <div className="container">
+        <div className="hero-grid">
+          {/* Left Column: Typography & Action */}
+          <div className="hero-content">
+            <div className="hero-eyebrow">
+              <span className="status-dot" aria-hidden="true" />
+              <span>Computer Science Engineering · India</span>
+            </div>
 
-      <h1 className="hero-title gsap-fade">
-        Hi, I'm <span className="accent">{profile.name}</span>.
-        <br />
-        I build things with code.
-      </h1>
+            <h1 className="hero-heading">
+              <span className="hero-heading-line">Building</span>
+              <span className="hero-heading-line">
+                <span className="hero-accent">Intelligent</span>
+              </span>
+              <span className="hero-heading-line">Software.</span>
+            </h1>
 
-      <p className="hero-sub gsap-fade">
-       A Computer Science Engineering student passionate about creating intelligent, user-
-       focused applications with Generative AI, Agentic AI, and modern full-stack 
-       technologies—transforming ideas into impactful digital experiences.
-      </p>
+            <p className="hero-description">
+              Computer Science Engineering student at <strong>Sahyadri College (9.73 CGPA)</strong> building
+              production-grade <strong>Generative AI systems</strong>, <strong>Agentic workflows</strong>,
+              RAG pipelines, and modern full-stack web applications.
+            </p>
 
-      <div className="hero-actions gsap-fade">
-        <button className="btn-primary" onClick={() => onNavigate("projects")}>
-          View projects
-        </button>
-        <button className="btn-ghost" onClick={() => onNavigate("contact")}>
-          Get in touch
-        </button>
-      </div>
+            <div className="hero-cta-group">
+              <button
+                className="btn-primary"
+                onClick={() => scrollTo("#work")}
+                aria-label="View selected projects"
+              >
+                <span>View My Work</span>
+                <span className="btn-arrow">↓</span>
+              </button>
 
-      <div className="hero-stack gsap-fade">
-        <span className="stack-label"> currently working with</span>
-        <div className="stack-chips">
-          {["C++", "Python", "React", "Node.js", "LangChain", "LangGraph", "Crew AI"].map((s) => (
-            <span className="chip" key={s}>
-              {s}
-            </span>
-          ))}
+              <button
+                className="btn-secondary"
+                onClick={() => scrollTo("#contact")}
+                aria-label="Get in touch"
+              >
+                <span>Let's Connect</span>
+                <span className="btn-arrow">→</span>
+              </button>
+
+              <button
+                className="btn-secondary"
+                onClick={onOpenResume}
+                aria-label="Open resume preview"
+              >
+                <span>Resume</span>
+                <span className="btn-arrow">↗</span>
+              </button>
+            </div>
+
+            <div className="hero-meta-row">
+              <div className="hero-meta-item">
+                <span className="meta-label">Academics</span>
+                <span className="meta-val">9.73 / 10 CGPA</span>
+              </div>
+              <div className="hero-meta-item">
+                <span className="meta-label">Degree & Batch</span>
+                <span className="meta-val">B.E. CSE · 2024–2028</span>
+              </div>
+              <div className="hero-meta-item">
+                <span className="meta-label">Core Specialization</span>
+                <span className="meta-val">GenAI & Full-Stack</span>
+              </div>
+              <div className="hero-meta-item">
+                <span className="meta-label">Location</span>
+                <span className="meta-val">{profile.location}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Editorial Portrait / Visual Element */}
+          <div className="hero-visual-col">
+            <div className="editorial-portrait-frame">
+              <div className="frame-corner-tl" aria-hidden="true" />
+              <div className="frame-corner-br" aria-hidden="true" />
+
+              <div className="portrait-image-wrapper">
+                <img
+                  src={profile.avatar}
+                  alt={profile.name}
+                  className="hero-portrait-img"
+                  onError={(e) => {
+                    // Fallback to stylized SVG avatar if image has issue
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src =
+                      "data:image/svg+xml;utf8," +
+                      encodeURIComponent(
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='480' viewBox='0 0 400 480'><rect width='400' height='480' fill='%23E8E3D5'/><text x='50%' y='50%' font-family='Space Grotesk, sans-serif' font-size='64' font-weight='bold' fill='%231D1C1A' text-anchor='middle'>${profile.name.toUpperCase()}</text></svg>`
+                      );
+                  }}
+                />
+              </div>
+
+              <div className="portrait-caption">
+                <span className="caption-name">{profile.name} Shettigar</span>
+                <span className="caption-tag">VTU Autonomous</span>
+              </div>
+
+              <div className="portrait-floating-stamp">
+                <span className="stamp-badge">LeetCode Milestone</span>
+                <span className="stamp-value">100+ Days Streak</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

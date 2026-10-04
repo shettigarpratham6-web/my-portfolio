@@ -1,84 +1,72 @@
 import { useState, useRef, useEffect } from "react";
-import Icon from "./Icon";
 import {
   profile,
   about,
-  skills,
   projects,
   achievements,
   certifications,
   education,
-  contact,
 } from "../data/data";
 
-// ── Rule engine ─────────────────────────────────────────────
-// Each rule: a list of trigger keywords + a function that returns a reply string.
-// First matching rule wins, checked top to bottom.
 const rules = [
   {
-    keywords: ["hi", "hello", "hey"],
-    reply: () => `Hey! I'm a quick assistant for ${profile.name}'s portfolio. Ask me about skills, projects, education, certifications, achievements, or how to get in touch.`,
+    keywords: ["hi", "hello", "hey", "greetings"],
+    reply: () =>
+      `Hello! I am an automated assistant for ${profile.name}'s portfolio. I can answer inquiries regarding projects, technical skills, education, certifications, or direct contact methods.`,
   },
   {
-    keywords: ["who are you", "about", "yourself", "background"],
+    keywords: ["who are you", "about", "yourself", "background", "bio"],
     reply: () => about.summary,
   },
   {
-    keywords: ["skill", "tech stack", "technology", "language", "know"],
+    keywords: ["skill", "stack", "technology", "language", "framework"],
     reply: () =>
-      `Technical skills: ${skills.technical.map((s) => s.name).join(", ")}. Tools: ${skills.tools.join(", ")}.`,
+      `Primary languages: C++, Python, JavaScript. Core frameworks: React, Vite, Node.js, Express, MongoDB. AI Focus: LangChain, LangGraph, ChromaDB, Ollama, Groq API, and autonomous agents.`,
   },
   {
-    keywords: ["project", "built", "build", "portfolio project"],
+    keywords: ["project", "work", "built", "portfolio"],
     reply: () =>
-      `Here are a few projects: ${projects.map((p) => p.title).join(", ")}. Ask about a specific one for more detail.`,
+      `Featured projects include: ${projects.map((p) => p.title).join(", ")}. You can explore detailed overviews in the Selected Work section.`,
   },
   {
-    keywords: ["education", "college", "degree", "study", "cgpa"],
+    keywords: ["education", "college", "degree", "cgpa", "marks"],
     reply: () =>
-      education.map((e) => `${e.degree} at ${e.school} (${e.year}) — ${e.description}`).join(" "),
+      education
+        .map((e) => `${e.degree} at ${e.school} (${e.year}) — ${e.description}`)
+        .join(" "),
   },
   {
-    keywords: ["certification", "certificate", "course"],
+    keywords: ["certification", "certificate", "credentials"],
     reply: () =>
-      `Certifications include: ${certifications.map((c) => `${c.title} (${c.issuer})`).join(", ")}.`,
+      `Certifications include: ${certifications.slice(0, 5).map((c) => `${c.title} (${c.issuer})`).join(", ")} and 5 others viewable in the Journey section.`,
   },
   {
-    keywords: ["achievement", "award", "leetcode", "unstop"],
+    keywords: ["achievement", "award", "leetcode", "contest"],
     reply: () =>
       achievements.map((a) => `${a.title}: ${a.description}`).join(" "),
   },
   {
     keywords: ["resume", "cv"],
-    reply: () => `You can view the resume using the "View resume" button in the sidebar — it opens right in the browser.`,
+    reply: () =>
+      `You can view ${profile.name}'s complete resume directly using the 'Resume' button in the navigation header.`,
   },
   {
-    keywords: ["contact", "email", "reach", "hire", "connect", "phone"],
+    keywords: ["contact", "email", "reach", "hire", "phone"],
     reply: () =>
-      `${contact.message} Email: ${profile.email}, or use the Contact section form directly.`,
+      `You can email ${profile.name} at ${profile.email} or call ${profile.phone}. You can also submit the message form in the Contact section.`,
   },
   {
     keywords: ["github"],
-    reply: () => {
-      const gh = profile.socials.find((s) => s.name === "GitHub");
-      return gh ? `Here's the GitHub: ${gh.url}` : "GitHub link isn't set up yet.";
-    },
+    reply: () => `GitHub profile: https://github.com/shettigarpratham6-web`,
   },
   {
     keywords: ["linkedin"],
-    reply: () => {
-      const li = profile.socials.find((s) => s.name === "LinkedIn");
-      return li ? `Here's the LinkedIn: ${li.url}` : "LinkedIn link isn't set up yet.";
-    },
-  },
-  {
-    keywords: ["thank", "thanks"],
-    reply: () => "You're welcome! Anything else you'd like to know?",
+    reply: () => `LinkedIn profile: https://www.linkedin.com/in/prathamshettigar/`,
   },
 ];
 
 const fallback =
-  "That question is outside the scope of this portfolio assistant. Please explore the relevant section of the portfolio, such as About, Skills, Projects, Education, Certifications, Achievements, Resume, or Contact, for more information.";
+  "I don't have specific data on that topic. Please refer to the relevant section (Work, About, Skills, Journey, or Contact) or reach out directly via email.";
 
 function getReply(input) {
   const text = input.toLowerCase();
@@ -86,12 +74,13 @@ function getReply(input) {
   return match ? match.reply() : fallback;
 }
 
-const CHATBOT_ICON = "https://cdn-icons-png.flaticon.com/128/18052/18052532.png";
-
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { from: "bot", text: `Hi, I'm ${profile.name}'s portfolio assistant. Ask me anything!` },
+    {
+      from: "bot",
+      text: `Hello! I'm ${profile.name}'s editorial assistant. Ask me anything about his work, technical stack, or background.`,
+    },
   ]);
   const [input, setInput] = useState("");
   const scrollRef = useRef(null);
@@ -117,28 +106,28 @@ export default function Chatbot() {
       <button
         className="chatbot-toggle"
         onClick={() => setOpen((o) => !o)}
-        aria-label={open ? "Close chat" : "Open chat"}
+        aria-label={open ? "Close assistant chat" : "Open assistant chat"}
       >
         {open ? (
-          <Icon name="close" size={24} />
+          <span style={{ fontSize: "20px", fontWeight: "bold" }}>✕</span>
         ) : (
-          <img
-            src={CHATBOT_ICON}
-            alt="Chatbot"
-            className="chatbot-toggle-img"
-          />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
         )}
       </button>
 
       {open && (
-        <div className="chatbot-panel" role="dialog" aria-label="Portfolio assistant chat">
+        <div className="chatbot-panel" role="dialog" aria-label="Portfolio AI Assistant">
           <div className="chatbot-header">
-            <img
-              src={CHATBOT_ICON}
-              alt="Chatbot"
-              className="chatbot-header-img"
-            />
-            <span>Ask about {profile.name}</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+              <circle cx="12" cy="5" r="2"></circle>
+              <path d="M12 7v4"></path>
+              <line x1="8" y1="16" x2="8" y2="16"></line>
+              <line x1="16" y1="16" x2="16" y2="16"></line>
+            </svg>
+            <span>Ask About {profile.name}</span>
           </div>
 
           <div className="chatbot-messages" ref={scrollRef}>
@@ -154,11 +143,11 @@ export default function Chatbot() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about skills, projects..."
-              aria-label="Type your question"
+              placeholder="Ask a question..."
+              aria-label="Ask assistant a question"
             />
-            <button type="submit" aria-label="Send">
-              <Icon name="send" size={16} />
+            <button type="submit" aria-label="Send query">
+              →
             </button>
           </form>
         </div>
