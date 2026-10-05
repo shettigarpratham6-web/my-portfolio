@@ -6,8 +6,8 @@ export default function DeveloperStats() {
       sub: "B.E. CSE · Sahyadri College",
     },
     {
-      num: "100+",
-      label: "LeetCode Days Streak",
+      num: "250+",
+      label: "LeetCode Active Days",
       sub: "Active Badges in Problem Solving",
     },
     {

@@ -110,7 +110,7 @@ export default function Home({ onOpenResume }) {
 
               <div className="portrait-floating-stamp">
                 <span className="stamp-badge">LeetCode Milestone</span>
-                <span className="stamp-value">100+ Days Streak</span>
+                <span className="stamp-value">250+ Active Days</span>
               </div>
             </div>
           </div>
