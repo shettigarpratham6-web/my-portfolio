@@ -66,7 +66,11 @@ export const projects = [
     stack: ["Node.js", "React.js", "AI Integration(API)", "Markdown Rendering", "Websecurity(Helmet, Rate Limiting"],
     link: "https://github.com/shettigarpratham6-web/Clarity-Script",
     featured: true,
-    image: "/projects/clarityscript.png",
+    image: "/logos/clarityscript-ui.png",
+    images: [
+      "/logos/clarityscript-ui.png",
+      "/logos/clarityscript-code.png",
+    ],
   },
   {
     title: "AI Video & Meeting Assistant",
@@ -93,6 +97,13 @@ export const projects = [
     link: "https://github.com/shettigarpratham6-web/Production-Ready-AI-Video-Assistant-with-RAG.git",
     featured: true,
     image: "/logos/ai-meeting-assistant.png",
+    images: [
+      "/logos/ai-meeting-assistant-studio.png",
+      "/logos/ai-meeting-assistant-pipeline.png",
+      "/logos/ai-meeting-assistant-workflow.png",
+      "/logos/ai-meeting-assistant-chat.png",
+      "/logos/ai-meeting-assistant-inngest.png",
+    ],
   },
   {
     title: "AI Task Prioritization Agent using LLM",
@@ -102,7 +113,11 @@ export const projects = [
     stack: ["Python", "Groq API", "LLaMA 3.1", "prompt engineering"],
     link: "https://github.com/shettigarpratham6-web/AI-powered-task-prioritization-agent.git",
     featured: true,
-    image: "/projects/ai-task-agent.png",
+    image: "/logos/ai-task-agent.png",
+    images: [
+      "/logos/ai-task-agent-output.png",
+      "/logos/ai-task-agent-code.png",
+    ],
   },
   {
     title: "Local Machine AI support",
@@ -112,7 +127,11 @@ export const projects = [
     stack: ["LangChain", "Ollama", "ChromaDB", "Pandas"],
     link: "https://github.com/shettigarpratham6-web/Local_AI_Agent.git",
     featured: false,
-    image: "/projects/local-rag.png",
+    image: "/logos/local-rag.png",
+    images: [
+      "/logos/local-rag-query.png",
+      "/logos/local-rag-init.png",
+    ],
   },
   {
     title: "Deadline Guardian",
@@ -129,7 +148,13 @@ export const projects = [
     ],
     link: "https://github.com/shettigarpratham6-web/Deadline_Guardian.git",
     featured: false,
-    image: "/projects/deadline-guardian.png",
+    image: "/logos/deadline-guardian.png",
+    images: [
+      "/logos/deadline-guardian-dashboard.png",
+      "/logos/deadline-guardian-ledger.png",
+      "/logos/deadline-guardian-planner.png",
+      "/logos/deadline-guardian-alerts.png",
+    ],
   },
   {
     title: "Autonomous Agentic Research Studio",
@@ -139,7 +164,13 @@ export const projects = [
     stack: ["LangChain", "Langsmith", "FastAPI", "Cerebras AI", "Gemini AI", "Next.js"],
     link: "https://github.com/shettigarpratham6-web/Autonomous-Agentic-Research-Studio.git",
     featured: false,
-    image: "/logos/agentic-research.png",
+    image: "/logos/agentic-research-ui.png",
+    images: [
+      "/logos/agentic-research-ui.png",
+      "/logos/agentic-research-langsmith-trace.png",
+      "/logos/agentic-research-langsmith-metrics.png",
+      "/logos/agentic-research-langsmith-analytics.png",
+    ],
   },
 
 ];

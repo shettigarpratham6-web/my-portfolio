@@ -1,8 +1,87 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { projects } from "../../data/data";
 
 function ProjectVisual({ project }) {
-  const [imgError, setImgError] = useState(false);
+  // Support array of images (project.images, project.screenshots, or project.image) or fallback to single string
+  const rawImages = [
+    ...(Array.isArray(project.images) ? project.images : []),
+    ...(Array.isArray(project.screenshots) ? project.screenshots : []),
+    ...(Array.isArray(project.image)
+      ? project.image
+      : typeof project.image === "string" && project.image
+      ? [project.image]
+      : []),
+  ];
+  const candidateImages = Array.from(new Set(rawImages));
+
+  const [failedImages, setFailedImages] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const validImages = candidateImages.filter((src) => !failedImages[src]);
+  const hasMultiple = validImages.length > 1;
+
+  // Keep currentIndex bounded
+  useEffect(() => {
+    if (currentIndex >= validImages.length && validImages.length > 0) {
+      setCurrentIndex(0);
+    }
+  }, [validImages.length, currentIndex]);
+
+  // Auto-play: cycle every 3 seconds, pause on hover or interaction
+  useEffect(() => {
+    if (!hasMultiple || isPaused) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % validImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [hasMultiple, isPaused, validImages.length]);
+
+  const handlePrev = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setCurrentIndex((prev) => (prev - 1 + validImages.length) % validImages.length);
+  };
+
+  const handleNext = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setCurrentIndex((prev) => (prev + 1) % validImages.length);
+  };
+
+  const handleTouchStart = (e) => {
+    setIsPaused(true);
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    setIsPaused(false);
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 40;
+    if (diff > threshold) {
+      handleNext();
+    } else if (diff < -threshold) {
+      handlePrev();
+    }
+  };
+
+  const handleImageError = (src) => {
+    setFailedImages((prev) => ({ ...prev, [src]: true }));
+  };
 
   const renderSvgVisual = () => {
     const title = project.title;
@@ -105,14 +184,192 @@ function ProjectVisual({ project }) {
   };
 
   return (
-    <div className="project-media-wrapper">
-      {project.image && !imgError ? (
-        <img
-          src={project.image}
-          alt={project.title}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          onError={() => setImgError(true)}
-        />
+    <div
+      className="project-media-wrapper"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      style={{ userSelect: "none" }}
+    >
+      {validImages.length > 0 ? (
+        <div
+          className="project-carousel-container"
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "100%",
+            overflow: "hidden",
+          }}
+        >
+          {/* Sliding track */}
+          <div
+            className="project-carousel-track"
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              transform: `translateX(-${currentIndex * 100}%)`,
+              transition: "transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)",
+            }}
+          >
+            {validImages.map((imgSrc, idx) => (
+              <div
+                key={imgSrc + idx}
+                className="project-carousel-slide"
+                style={{
+                  minWidth: "100%",
+                  width: "100%",
+                  height: "100%",
+                  flexShrink: 0,
+                }}
+              >
+                <img
+                  src={imgSrc}
+                  alt={`${project.title} screenshot ${idx + 1}`}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                  onError={() => handleImageError(imgSrc)}
+                  draggable="false"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Left Arrow Button */}
+          {hasMultiple && (
+            <button
+              type="button"
+              className="carousel-nav-btn carousel-prev-btn"
+              onClick={handlePrev}
+              aria-label="Previous screenshot"
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "12px",
+                transform: "translateY(-50%)",
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                background: "rgba(29, 28, 26, 0.72)",
+                backdropFilter: "blur(6px)",
+                border: "1px solid rgba(255, 255, 255, 0.18)",
+                color: "#F4F1E8",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                zIndex: 3,
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.25)",
+                transition: "background 0.2s, transform 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(29, 28, 26, 0.92)";
+                e.currentTarget.style.transform = "translateY(-50%) scale(1.08)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(29, 28, 26, 0.72)";
+                e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+          )}
+
+          {/* Right Arrow Button */}
+          {hasMultiple && (
+            <button
+              type="button"
+              className="carousel-nav-btn carousel-next-btn"
+              onClick={handleNext}
+              aria-label="Next screenshot"
+              style={{
+                position: "absolute",
+                top: "50%",
+                right: "12px",
+                transform: "translateY(-50%)",
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                background: "rgba(29, 28, 26, 0.72)",
+                backdropFilter: "blur(6px)",
+                border: "1px solid rgba(255, 255, 255, 0.18)",
+                color: "#F4F1E8",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                zIndex: 3,
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.25)",
+                transition: "background 0.2s, transform 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(29, 28, 26, 0.92)";
+                e.currentTarget.style.transform = "translateY(-50%) scale(1.08)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(29, 28, 26, 0.72)";
+                e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          )}
+
+          {/* Navigation Dots */}
+          {hasMultiple && (
+            <div
+              className="carousel-dots-container"
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "4px 8px",
+                borderRadius: "9999px",
+                background: "rgba(29, 28, 26, 0.65)",
+                backdropFilter: "blur(6px)",
+                border: "1px solid rgba(255, 255, 255, 0.12)",
+                zIndex: 3,
+              }}
+            >
+              {validImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setCurrentIndex(idx);
+                  }}
+                  aria-label={`Go to screenshot ${idx + 1}`}
+                  style={{
+                    width: currentIndex === idx ? "20px" : "6px",
+                    height: "6px",
+                    borderRadius: "9999px",
+                    background: currentIndex === idx ? "var(--accent, #8BD65A)" : "rgba(244, 241, 232, 0.4)",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer",
+                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       ) : (
         renderSvgVisual()
       )}
