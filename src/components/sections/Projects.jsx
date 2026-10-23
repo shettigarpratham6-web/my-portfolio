@@ -223,6 +223,9 @@ function ProjectVisual({ project }) {
                   width: "100%",
                   height: "100%",
                   flexShrink: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <img
@@ -231,7 +234,7 @@ function ProjectVisual({ project }) {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
+                    objectFit: "contain",
                     display: "block",
                   }}
                   onError={() => handleImageError(imgSrc)}
