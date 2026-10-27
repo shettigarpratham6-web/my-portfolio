@@ -59,6 +59,40 @@ export const skills = {
 
 export const projects = [
   {
+    title: "Autonomous Agentic Research Studio",
+    tag: "Langchain · Langsmith · LCEL pipeline",
+    description:
+      "Built a full-stack multi-agent research platform that automates web research and generates structured, dynamically sourced intelligence reports.Orchestrated Search, Reader, Critic, and Writer agents using LangChain, Gemini, Cerebras, tool calling, and LangSmith for reliable research workflows.",
+    stack: ["LangChain", "Langsmith", "FastAPI", "Cerebras AI", "Gemini AI", "Next.js"],
+    link: "https://github.com/shettigarpratham6-web/Autonomous-Agentic-Research-Studio.git",
+    featured: true,
+    image: "/logos/agentic-research-ui.png",
+    images: [
+      "/logos/agentic-research-ui.png",
+      "/logos/agentic-research-langsmith-trace.png",
+      "/logos/agentic-research-langsmith-metrics.png",
+      "/logos/agentic-research-langsmith-analytics.png",
+    ],
+  },
+
+  {
+    title: "PromptFill - Lightweight Python Prompt Management Utility",
+    tag: "Python · AI Tooling · Template Loader",
+    description:
+      "PromptFill is a zero-dependency Python package for developers to streamline prompt template management. Effortlessly decouple templates from application code by loading, organizing, and formatting external Markdown and text files.",
+    stack: ["Python", "PyPI", "Markdown", "Template Engine"],
+    link: "https://github.com/shettigarpratham6-web/promptfill",
+    featured: true,
+    image: "/logos/promptfill-pypi.png",
+    images: [
+      "/logos/promptfill-pypi.png",
+      "/logos/promptfill-colab-demo.png",
+      "/logos/promptfill-colab-setup.png",
+      "/logos/promptfill-code.png",
+    ],
+  },
+
+  {
     title: "ClarityScript",
     tag: "AI web LLM Analysis",
     description:
@@ -106,33 +140,34 @@ export const projects = [
     ],
   },
   {
-    title: "AI Task Prioritization Agent using LLM",
-    tag: " AI Assistant",
-    description:
-      "Built an AI-powered task prioritization agent that transforms unstructured task lists into actionable categories using LLMs.",
-    stack: ["Python", "Groq API", "LLaMA 3.1", "prompt engineering"],
-    link: "https://github.com/shettigarpratham6-web/AI-powered-task-prioritization-agent.git",
-    featured: true,
-    image: "/logos/ai-task-agent.png",
-    images: [
-      "/logos/ai-task-agent-output.png",
-      "/logos/ai-task-agent-code.png",
-    ],
-  },
-  {
     title: "Local Machine AI support",
     tag: "RAG · AI",
     description:
       "Built a local AI assistant using Retrieval-Augmented Generation (RAG) to answer questions from custom documents while keeping all data on the user's machine.",
     stack: ["LangChain", "Ollama", "ChromaDB", "Pandas"],
     link: "https://github.com/shettigarpratham6-web/Local_AI_Agent.git",
-    featured: false,
+    featured: true,
     image: "/logos/local-rag.png",
     images: [
       "/logos/local-rag-query.png",
       "/logos/local-rag-init.png",
     ],
   },
+  {
+    title: "AI Task Prioritization Agent using LLM",
+    tag: " AI Assistant",
+    description:
+      "Built an AI-powered task prioritization agent that transforms unstructured task lists into actionable categories using LLMs.",
+    stack: ["Python", "Groq API", "LLaMA 3.1", "prompt engineering"],
+    link: "https://github.com/shettigarpratham6-web/AI-powered-task-prioritization-agent.git",
+    featured: false,
+    image: "/logos/ai-task-agent.png",
+    images: [
+      "/logos/ai-task-agent-output.png",
+      "/logos/ai-task-agent-code.png",
+    ],
+  },
+
   {
     title: "Deadline Guardian",
     tag: "Hackathon Vibe2ship",
@@ -156,22 +191,8 @@ export const projects = [
       "/logos/deadline-guardian-alerts.png",
     ],
   },
-  {
-    title: "Autonomous Agentic Research Studio",
-    tag: "Langchain · Langsmith · LCEL pipeline",
-    description:
-      "Built a full-stack multi-agent research platform that automates web research and generates structured, dynamically sourced intelligence reports.Orchestrated Search, Reader, Critic, and Writer agents using LangChain, Gemini, Cerebras, tool calling, and LangSmith for reliable research workflows.",
-    stack: ["LangChain", "Langsmith", "FastAPI", "Cerebras AI", "Gemini AI", "Next.js"],
-    link: "https://github.com/shettigarpratham6-web/Autonomous-Agentic-Research-Studio.git",
-    featured: false,
-    image: "/logos/agentic-research-ui.png",
-    images: [
-      "/logos/agentic-research-ui.png",
-      "/logos/agentic-research-langsmith-trace.png",
-      "/logos/agentic-research-langsmith-metrics.png",
-      "/logos/agentic-research-langsmith-analytics.png",
-    ],
-  },
+
+
 
 ];
 

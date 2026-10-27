@@ -261,6 +261,12 @@ const projectTechIcons = {
       <path fill="#FFFFFF" d="M14.5 8h2v8h-2V9.8l-5.6 6.2H7V8h2v6.2l5.5-6.2z" />
     </svg>
   ),
+  "pypi": (
+    <svg viewBox="0 0 24 24" width="14" height="14">
+      <path fill="#3775A9" d="M12 2L3.5 6.9v9.8L12 21.6l3.5-2v-3.5L12 18.2l-5-2.9V9.7l5-2.9 5 2.9v2.4l3.5 2V6.9L12 2z"/>
+      <path fill="#FFD43B" d="M15.5 12.1v3.5l-3.5 2v-3.5l3.5-2z"/>
+    </svg>
+  ),
 };
 
 function getProjectTechIcon(techName) {
@@ -273,6 +279,8 @@ function getProjectTechIcon(techName) {
   if (key.includes("websecurity") || key.includes("security") || key.includes("helmet")) return projectTechIcons["websecurity(helmet, rate limiting"];
   if (key.includes("markdown")) return projectTechIcons["markdown rendering"];
   if (key.includes("prompt")) return projectTechIcons["prompt engineering"];
+  if (key.includes("pypi")) return projectTechIcons["pypi"];
+  if (key.includes("template")) return projectTechIcons["prompt engineering"];
   if (key.includes("api")) return projectTechIcons["ai integration(api)"];
   return (
     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
