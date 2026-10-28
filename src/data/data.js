@@ -345,3 +345,21 @@ export const contact = {
   message:
     "I'm always open to discussing new opportunities, exciting projects, and collaborations in Generative AI, Agentic AI, and full-stack development. Let's connect!",
 };
+
+export const articles = [
+  {
+    title: "Stop Hardcoding Prompts in Your Python Files: Meet PromptFill",
+    subtitle: "A lightweight utility to decouple templates from application code",
+    description:
+      "Open any LLM-powered Python project and you'll probably find prompts scattered across files as messy multiline strings. PromptFill is a zero-dependency Python package designed to cleanly decouple prompt templates from application code, organize them in external Markdown or text files, and format them effortlessly.",
+    url: "https://dev.to/pratham_shettigar_12/stop-hardcoding-prompts-in-your-python-files-meet-promptfill-best-balance-of-curiosity-and-search-30md",
+    platform: "DEV Community",
+    date: "October 2026",
+    readTime: "4 min read",
+    tags: ["Python", "AI", "Open Source", "LLM", "Prompt Engineering"],
+    image:
+      "https://media2.dev.to/dynamic/image/width=1200,height=627,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fxvxw9kyh540y1a20ialo.png",
+    fallbackImage: "/logos/promptfill-pypi.png",
+  },
+];
+

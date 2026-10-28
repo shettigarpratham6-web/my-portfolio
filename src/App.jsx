@@ -7,6 +7,7 @@ import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
 import DeveloperStats from "./components/sections/DeveloperStats";
 import Journey from "./components/sections/Journey";
+import Articles from "./components/sections/Articles";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/Footer";
 import ResumeModal from "./components/ResumeModal";
@@ -29,6 +30,7 @@ export default function App() {
         <Skills />
         <DeveloperStats />
         <Journey />
+        <Articles />
         <Contact onOpenResume={() => setResumeOpen(true)} />
       </main>
 
